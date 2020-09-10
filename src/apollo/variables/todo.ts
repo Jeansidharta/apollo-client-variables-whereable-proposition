@@ -1,5 +1,6 @@
 import { Todo } from "../../models/todo";
 import { makeVar } from "@apollo/client";
+import { makeWhereablePolicy } from "../../lib/where";
 
 const initialTodoValues: Todo[] = [
 	{
@@ -23,17 +24,10 @@ const initialTodoValues: Todo[] = [
 
 const todoVar = makeVar<Todo[]>(initialTodoValues);
 
-function readTodo (_: unknown, { args }: { args: Partial<Todo> | null }) {
-	const todos = todoVar();
-	if (!args) return todos;
-	return todos.filter(todo => {
-		if (args.name !== undefined && todo.name !== args.name) return false;
-		if (args.id !== undefined && todo.id !== args.id) return false;
-		if (args.done !== undefined && todo.done !== args.done) return false;
-		return true;
-	});
+function readTodo () {
+	return todoVar();
 }
 
 export const TodoPolicy = {
-	read: readTodo,
+	read: makeWhereablePolicy(readTodo),
 }
