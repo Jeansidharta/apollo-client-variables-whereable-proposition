@@ -1,0 +1,14 @@
+.home-page-container {
+	margin: 16px 0;
+}
+
+.home-page-container h1 {
+	font-size: 18px;
+	margin: 0;
+}
+
+.home-page-container p {
+	margin: 0;
+	display: block;
+	width: max-content;
+}

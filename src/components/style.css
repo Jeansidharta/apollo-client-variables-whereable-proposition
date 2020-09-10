@@ -1,0 +1,10 @@
+.todo-component-root {
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	padding: 4px 16px;
+	border-radius: 12px;
+	margin: 8px;
+}
+
+.todo-component-root p {
+	margin: 0;
+}
